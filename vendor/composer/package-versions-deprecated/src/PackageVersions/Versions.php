@@ -119,6 +119,7 @@ final class Versions
   'symfony/security-guard' => 'v5.1.8@076e2af7e61723ff50b281806b4d0f5e4df4e6b3',
   'symfony/security-http' => 'v5.1.8@01fc5b3a641ea851624555793c19e6cec11b596f',
   'symfony/serializer' => 'v5.1.8@20d3c6c58c41344a427488c0d2902bfbfbe17ddb',
+  'symfony/serializer-pack' => 'v1.0.4@61173947057d5e1bf1c79e2a6ab6a8430be0602e',
   'symfony/service-contracts' => 'v2.2.0@d15da7ba4957ffb8f1747218be9e1a121fd298a1',
   'symfony/stopwatch' => 'v5.1.8@3d9f57c89011f0266e6b1d469e5c0110513859d5',
   'symfony/string' => 'v5.1.8@a97573e960303db71be0dd8fda9be3bca5e0feea',

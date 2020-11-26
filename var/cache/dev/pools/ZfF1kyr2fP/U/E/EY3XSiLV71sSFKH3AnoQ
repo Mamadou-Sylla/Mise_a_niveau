@@ -1,0 +1,64 @@
+<?php //%255BApp%255CEntity%255CAdmin%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Table'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Table')),
+        clone ($p['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'repositoryClass' => [
+                'App\\Repository\\AdminRepository',
+            ],
+            'name' => [
+                1 => '`admin`',
+            ],
+            'collectionOperations' => [
+                2 => [
+                    'get' => [
+                        'path' => '/admin',
+                    ],
+                    'post_user' => [
+                        'method' => 'POST',
+                        'path' => '/admin',
+                        'route_name' => 'add_user',
+                    ],
+                ],
+            ],
+            'itemOperations' => [
+                2 => [
+                    'get' => [
+                        'path' => '/admin/{id}',
+                    ],
+                    'put' => [
+                        'path' => '/admin/{id}',
+                    ],
+                ],
+            ],
+            'attributes' => [
+                2 => [
+                    'security' => 'is_granted(\'ROLE_Admin\')',
+                    'security_message' => 'Vous n\'avez pas acces à ce ressource',
+                    'normalization_context' => [
+                        'groups' => [
+                            'admin:read',
+                        ],
+                    ],
+                    'denormalization_context' => [
+                        'groups' => [
+                            'admin:write',
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+        $o[2],
+    ],
+    []
+); }];

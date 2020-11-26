@@ -1,0 +1,58 @@
+<?php //%255BApp%255CEntity%255CCM%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+        clone ($p['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'repositoryClass' => [
+                'App\\Repository\\CMRepository',
+            ],
+            'collectionOperations' => [
+                1 => [
+                    'get' => [
+                        'path' => '/cm',
+                    ],
+                    'post' => [
+                        'path' => '/cm',
+                    ],
+                ],
+            ],
+            'itemOperations' => [
+                1 => [
+                    'get' => [
+                        'path' => '/cm/{id}',
+                    ],
+                    'put' => [
+                        'path' => '/cm/{id}',
+                    ],
+                ],
+            ],
+            'attributes' => [
+                1 => [
+                    'security' => 'is_granted(\'ROLE_Admin\')',
+                    'security_message' => 'Vous n\'avez pas acces à ce ressource',
+                    'normalization_context' => [
+                        'groups' => [
+                            'apprenant:read',
+                        ],
+                    ],
+                    'denormalization_context' => [
+                        'groups' => [
+                            'apprenant:write',
+                        ],
+                    ],
+                    'route_prefix' => '/admin',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+    ],
+    []
+); }];

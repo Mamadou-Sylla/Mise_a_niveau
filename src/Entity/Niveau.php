@@ -2,11 +2,32 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\NiveauRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=NiveauRepository::class)
+ * @ApiResource(
+ *     normalizationContext={"groups"={"niveau:read"}},
+ *    denormalizationContext={"groups"={"niveau:write"}},
+ *
+ *     attributes={
+ *      "security"="is_granted('ROLE_Admin') and is_granted('ROLE_CM') and is_granted('ROLE_Formateur')",
+ *      "security_message"="Vous n'avez pas acces à ce ressource"
+ * },
+ *     collectionOperations={
+ *        "get"={"path"="/admin/niveau"},
+ *        "post"={"path"="/admin/niveau"}
+ *     },
+ *      itemOperations={
+ *     "get"={"path"="/admin/niveau/{id}"},
+ *     "put"={"path"="/admin/niveau/{id}"},
+ *
+ *     }
+ * )
  */
 class Niveau
 {
@@ -14,21 +35,25 @@ class Niveau
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"competence:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"competence:read"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"competence:read"})
      */
     private $critereEvalution;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"competence:read"})
      */
     private $groupeAction;
 

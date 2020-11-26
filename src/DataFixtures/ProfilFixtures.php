@@ -7,7 +7,6 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\User;
 use App\Entity\Profil;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class ProfilFixtures extends Fixture
 {
@@ -24,22 +23,30 @@ class ProfilFixtures extends Fixture
         $faker= Factory::create('fr_FR');
 
         $profil_user = new Profil();
-        $profil_user->setLibelle("Admin");
+        $profil_user
+            ->setLibelle("Admin")
+            ->setIsDeleted(false);
         $this->addReference(self::Profil_User, $profil_user);
         $manager->persist($profil_user);
 
         $profil_cm = new Profil();
-        $profil_cm->setLibelle("CM");
+        $profil_cm
+            ->setLibelle("CM")
+            ->setIsDeleted(false);
         $this->addReference(self::Profil_CM, $profil_cm);
         $manager->persist($profil_cm);
 
         $profil_formateur = new Profil();
-        $profil_formateur->setLibelle("Formateur");
+        $profil_formateur
+            ->setLibelle("Formateur")
+            ->setIsDeleted(false);
         $this->addReference(self::Profil_Formateur, $profil_formateur);
         $manager->persist($profil_formateur);
 
         $profil_apprenant = new Profil();
-        $profil_apprenant->setLibelle("Apprenant");
+        $profil_apprenant
+            ->setLibelle("Apprenant")
+            ->setIsDeleted(false);
         $this->addReference(self::Profil_Apprenant, $profil_apprenant);
         $manager->persist($profil_apprenant);
 

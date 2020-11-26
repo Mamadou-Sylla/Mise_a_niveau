@@ -1,0 +1,71 @@
+<?php //%255BApp%255CEntity%255CProfil%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+        clone ($p['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
+        clone ($p['ApiPlatform\\Core\\Annotation\\ApiFilter'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiFilter')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'repositoryClass' => [
+                'App\\Repository\\ProfilRepository',
+            ],
+            'collectionOperations' => [
+                1 => [
+                    'get' => [
+                        'path' => '/profils/{id}/users',
+                    ],
+                    'post' => [
+                        'path' => '/profils',
+                    ],
+                ],
+            ],
+            'itemOperations' => [
+                1 => [
+                    'get' => [
+                        'path' => '/profils/{id}',
+                    ],
+                    'put' => [
+                        'path' => '/profils/{id}',
+                    ],
+                    'delete' => [
+                        'path' => '/profils/{id}',
+                    ],
+                ],
+            ],
+            'attributes' => [
+                1 => [
+                    'security' => 'is_granted(\'ROLE_Admin\')',
+                    'security_message' => 'Ressource accessible que par l\'Admin',
+                    'normalization_context' => [
+                        'groups' => [
+                            'profil:read',
+                        ],
+                    ],
+                    'denormalization_context' => [
+                        'groups' => [
+                            'profil:write',
+                        ],
+                    ],
+                    'route_prefix' => '/admin',
+                ],
+            ],
+            'filterClass' => [
+                2 => 'ApiPlatform\\Core\\Bridge\\Doctrine\\Orm\\Filter\\BooleanFilter',
+            ],
+            'properties' => [
+                2 => [
+                    'isDeleted',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+        $o[2],
+    ],
+    []
+); }];

@@ -36,7 +36,8 @@ class UserFixtures extends Fixture
                 ->setFirstName($faker->firstName)
                 ->setLastName($faker->LastName)
                 ->setPassword($hash)
-                ->setProfil($this->getReference(ProfilFixtures::Profil_User));
+                ->setProfil($this->getReference(ProfilFixtures::Profil_User))
+                ->setEtat(false);
             $manager->persist($user);
 
             $cm = new CM();
@@ -45,7 +46,8 @@ class UserFixtures extends Fixture
                 ->setFirstName($faker->firstName)
                 ->setLastName($faker->LastName)
                 ->setPassword($hash)
-                ->setProfil($this->getReference(ProfilFixtures::Profil_CM));
+                ->setProfil($this->getReference(ProfilFixtures::Profil_CM))
+                ->setEtat(false);
             $manager->persist($cm);
 
             $f = new Formateur();
@@ -55,7 +57,8 @@ class UserFixtures extends Fixture
                 ->setLastName($faker->LastName)
                 ->setPassword($hash)
                 ->setTelephone($faker->phoneNumber)
-                ->setProfil($this->getReference(ProfilFixtures::Profil_Formateur));
+                ->setProfil($this->getReference(ProfilFixtures::Profil_Formateur))
+                ->setEtat(false);
             $manager->persist($f);
 
 
@@ -68,7 +71,8 @@ class UserFixtures extends Fixture
                 ->setStatut($faker->randomElement(["actif","renvoyé","suspendu"]))
                 ->setAdresse($faker->city)
                 ->setAvatar("NULL")
-                ->setProfil($this->getReference(ProfilFixtures::Profil_Apprenant));
+                ->setProfil($this->getReference(ProfilFixtures::Profil_Apprenant))
+                ->setEtat(false);
             $manager->persist($a);
 
 

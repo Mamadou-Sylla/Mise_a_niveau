@@ -21,8 +21,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *      "security_message"="Vous n'avez pas acces à ce ressource"
  * },
  *     collectionOperations={
- *     "get"={"path"="/admin"},
- *      "post"={"path"="/admin"},
+ *        "get"={"path"="/admin"},
+ *        "post_user"=
+ *       {
+ *           "method"="POST",
+ *           "path"="/admin",
+ *          "route_name"="add_user"
+ *       }
  *     },
  *      itemOperations={
  *     "get"={"path"="/admin/{id}"},
