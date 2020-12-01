@@ -16,8 +16,10 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'get' => [
                         'path' => '/cm',
                     ],
-                    'post' => [
+                    'post_cm' => [
+                        'method' => 'POST',
                         'path' => '/cm',
+                        'route_name' => 'add_cm',
                     ],
                 ],
             ],

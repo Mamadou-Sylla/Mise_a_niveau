@@ -43,11 +43,12 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
-                    'put' => [
-                        'path' => '/admin/{id}',
+                    'put_user' => [
+                        'method' => 'PUT',
+                        'path' => '/admin/{id_admin}',
+                        'route_name' => 'admin',
                         'input' => null,
                         'output' => null,
-                        'method' => 'PUT',
                         'input_formats' => [
                             'jsonld' => [
                                 'application/ld+json',

@@ -21,7 +21,12 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * },
  *     collectionOperations={
  *     "get"={"path"="/cm"},
- *      "post"={"path"="/cm"},
+ *      "post_cm"=
+ *       {
+ *           "method"="POST",
+ *           "path"="/cm",
+ *          "route_name"="add_cm"
+ *       }
  *     },
  *      itemOperations={
  *     "get"={"path"="/cm/{id}"},

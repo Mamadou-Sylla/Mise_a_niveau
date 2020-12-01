@@ -2,13 +2,20 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiProperty;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 
 /**
  * /**
@@ -23,7 +30,8 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
  *     routePrefix="/admin",
  *     attributes={
  *      "security"="is_granted('ROLE_Admin')",
- *      "security_message"="Vous n'avez pas acces à ce ressource"
+ *      "security_message"="Vous n'avez pas acces à ce ressource",
+ *     "pagination_items_per_page"=30
  * },
  *     collectionOperations={
  *     "get"={"path"="/users"},
@@ -44,12 +52,16 @@ class User implements UserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups({"profil:read"})
+     * @ApiProperty(identifier=false)
      */
     protected $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Groups({"profil:read", "admin:read", "cm:read","formateur:read","apprenant:read"})
+     * @Assert\NotBlank(message="L'email est obligatoire")
+     * @ApiProperty(identifier=false)
+
      */
     protected $email;
 
@@ -62,31 +74,40 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Le password est obligatoire")
+     * @ApiProperty(identifier=false)
      */
     protected $password;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"profil:read", "admin:read", "cm:read","formateur:read","apprenant:read"})
+     * @ApiProperty(identifier=false)
+     * @Assert\NotBlank(message="Le prenom est obligatoire")
      */
     protected $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"profil:read", "admin:read", "cm:read","formateur:read","apprenant:read"})
+     * @Assert\NotBlank(message="Le nom est obligatoire")
+     * @ApiProperty(identifier=false)
      */
     protected $lastname;
 
     /**
      * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="users")
+     * @Assert\NotBlank(message="Le profil est obligatoire")
      */
     protected $profil;
 
     /**
      * @ORM\Column(type="boolean")
      * @Groups({"profil:read", "admin:read", "cm:read","formateur:read","apprenant:read"})
+     * @ApiProperty(identifier=false)
      */
-    protected $etat;
+    protected $etat=false;
+
 
     public function getId(): ?int
     {
@@ -213,4 +234,7 @@ class User implements UserInterface
 
         return $this;
     }
+
+
+
 }

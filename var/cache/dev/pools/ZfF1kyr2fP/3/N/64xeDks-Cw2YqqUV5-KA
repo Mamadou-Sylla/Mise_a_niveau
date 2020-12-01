@@ -4,12 +4,22 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
     $o = [
         clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
         clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        clone ($p['Symfony\\Component\\Validator\\Constraints\\NotBlank'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\NotBlank')),
+        clone ($p['ApiPlatform\\Core\\Annotation\\ApiProperty'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiProperty')),
     ],
     null,
     [
         'stdClass' => [
             'length' => [
                 255,
+            ],
+            'groups' => [
+                2 => [
+                    'Default',
+                ],
+            ],
+            'identifier' => [
+                3 => false,
             ],
         ],
         'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
@@ -27,6 +37,8 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
     [
         $o[0],
         $o[1],
+        $o[2],
+        $o[3],
     ],
     []
 ); }];

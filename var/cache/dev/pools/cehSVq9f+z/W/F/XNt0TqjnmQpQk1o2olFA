@@ -42,6 +42,10 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'competence:read',
                 ],
+                [
+                    'competence:read',
+                    'competence:write',
+                ],
             ],
         ],
     ],

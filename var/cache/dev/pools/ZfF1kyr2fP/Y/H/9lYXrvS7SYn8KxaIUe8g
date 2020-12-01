@@ -16,18 +16,22 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'get' => [
                         'path' => '/apprenants',
                     ],
-                    'post' => [
+                    'post_apprenant' => [
+                        'method' => 'POST',
                         'path' => '/apprenants',
+                        'route_name' => 'apprenant',
                     ],
                 ],
             ],
             'itemOperations' => [
                 1 => [
                     'get' => [
-                        'path' => '/apprenants/{id}',
+                        'path' => '/apprenants/{id_apprenant}',
                     ],
-                    'put' => [
-                        'path' => '/apprenants/{id}',
+                    'add_apprenant' => [
+                        'method' => 'PUT',
+                        'path' => '/apprenants/{id_apprenant}',
+                        'route_name' => 'admin',
                     ],
                 ],
             ],

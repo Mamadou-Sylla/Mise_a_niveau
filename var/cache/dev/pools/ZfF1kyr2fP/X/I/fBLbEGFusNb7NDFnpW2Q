@@ -5,6 +5,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Id'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Id')),
         clone ($p['Doctrine\\ORM\\Mapping\\GeneratedValue'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\GeneratedValue')),
         clone ($p['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+        clone ($p['ApiPlatform\\Core\\Annotation\\ApiProperty'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiProperty')),
     ],
     null,
     [
@@ -12,12 +13,16 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'type' => [
                 2 => 'integer',
             ],
+            'identifier' => [
+                3 => true,
+            ],
         ],
     ],
     [
         $o[0],
         $o[1],
         $o[2],
+        $o[3],
     ],
     []
 ); }];

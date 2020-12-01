@@ -32,8 +32,10 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'get' => [
                         'path' => '/admin/{id}',
                     ],
-                    'put' => [
-                        'path' => '/admin/{id}',
+                    'put_user' => [
+                        'method' => 'PUT',
+                        'path' => '/admin/{id_admin}',
+                        'route_name' => 'admin',
                     ],
                 ],
             ],

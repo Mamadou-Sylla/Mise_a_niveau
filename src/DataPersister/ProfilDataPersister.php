@@ -15,11 +15,11 @@ class ProfilDataPersister implements ContextAwareDataPersisterInterface
     /**
      * @var EntityManagerInterface
      */
-    private $_entityManager;
+    private $entityManager;
 
 
     public function __construct(EntityManagerInterface $em){
-        $this->_entityManager=$em;
+        $this->entityManager=$em;
     }
     public function supports($data, array $context = []): bool
     {
@@ -29,21 +29,21 @@ class ProfilDataPersister implements ContextAwareDataPersisterInterface
 
     public function persist($data, array $context = [])
     {
-        $this->_entityManager->persist($data);
-        $this->_entityManager->flush();
+        $this->entityManager->persist($data);
+        $this->entityManager->flush();
     }
 
     public function remove($data, array $context = [])
     {
         $profil=$data;
         $profil->setIsDeleted(true);
-        $this->_entityManager->persist($profil);
+        $this->entityManager->persist($profil);
         $users=$data->getUsers();
         foreach ($users as $user){
             $archived=$user->setEtat(true);
-            $this->_entityManager->persist($archived);
+            $this->entityManager->persist($archived);
         }
-        $this->_entityManager->flush();
+        $this->entityManager->flush();
         return new Response("Profil");
     }
 

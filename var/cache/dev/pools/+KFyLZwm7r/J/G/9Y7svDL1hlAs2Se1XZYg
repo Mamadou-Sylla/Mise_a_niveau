@@ -16,7 +16,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'itemOperations' => [
                 [
                     'get' => [
-                        'path' => '/apprenants/{id}',
+                        'path' => '/apprenants/{id_apprenant}',
                         'input' => null,
                         'output' => null,
                         'method' => 'GET',
@@ -43,11 +43,12 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
-                    'put' => [
-                        'path' => '/apprenants/{id}',
+                    'add_apprenant' => [
+                        'method' => 'PUT',
+                        'path' => '/apprenants/{id_apprenant}',
+                        'route_name' => 'admin',
                         'input' => null,
                         'output' => null,
-                        'method' => 'PUT',
                         'input_formats' => [
                             'jsonld' => [
                                 'application/ld+json',
@@ -103,11 +104,12 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
-                    'post' => [
+                    'post_apprenant' => [
+                        'method' => 'POST',
                         'path' => '/apprenants',
+                        'route_name' => 'apprenant',
                         'input' => null,
                         'output' => null,
-                        'method' => 'POST',
                         'input_formats' => [
                             'jsonld' => [
                                 'application/ld+json',

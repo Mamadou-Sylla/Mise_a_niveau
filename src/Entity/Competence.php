@@ -42,7 +42,7 @@ class Competence
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"competence:read"})
+     * @Groups({"competence:read", "competence:write"})
      */
     private $libelle;
 
@@ -53,9 +53,17 @@ class Competence
      */
     private $niveau;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=GroupeCompetence::class, mappedBy="competence")
+     */
+    private $groupeCompetences;
+
+
+
     public function __construct()
     {
         $this->niveau = new ArrayCollection();
+        $this->groupeCompetences = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -104,4 +112,36 @@ class Competence
 
         return $this;
     }
+
+    /**
+     * @return Collection|GroupeCompetence[]
+     */
+    public function getGroupeCompetences(): Collection
+    {
+        return $this->groupeCompetences;
+    }
+
+    public function addGroupeCompetence(GroupeCompetence $groupeCompetence): self
+    {
+        if (!$this->groupeCompetences->contains($groupeCompetence)) {
+            $this->groupeCompetences[] = $groupeCompetence;
+            $groupeCompetence->addCompetence($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupeCompetence(GroupeCompetence $groupeCompetence): self
+    {
+        if ($this->groupeCompetences->removeElement($groupeCompetence)) {
+            $groupeCompetence->removeCompetence($this);
+        }
+
+        return $this;
+    }
+
+
+
+
+
 }

@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *    denormalizationContext={"groups"={"niveau:write"}},
  *
  *     attributes={
- *      "security"="is_granted('ROLE_Admin') and is_granted('ROLE_CM') and is_granted('ROLE_Formateur')",
+ *      "security"="is_granted('ROLE_Admin')",
  *      "security_message"="Vous n'avez pas acces à ce ressource"
  * },
  *     collectionOperations={
@@ -45,6 +45,7 @@ class Niveau
      */
     private $libelle;
 
+
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"competence:read"})
@@ -58,7 +59,8 @@ class Niveau
     private $groupeAction;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Competence::class, inversedBy="niveau")
+     * @ORM\ManyToOne(targetEntity=Competence::class, inversedBy="niveau", cascade={"persist"})
+     *  @Groups({"competence:read","competence:write"})
      */
     private $competence;
 

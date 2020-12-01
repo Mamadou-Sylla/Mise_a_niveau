@@ -1,0 +1,59 @@
+<?php //%255BApp%255CEntity%255CGroupeTag%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+        clone ($p['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'repositoryClass' => [
+                'App\\Repository\\GroupeTagRepository',
+            ],
+            'collectionOperations' => [
+                1 => [
+                    'get' => [
+                        'path' => '/grptags',
+                    ],
+                    'post' => [
+                        'path' => '/grptags',
+                    ],
+                ],
+            ],
+            'itemOperations' => [
+                1 => [
+                    'get' => [
+                        'path' => '/grptags/{id}/tags',
+                    ],
+                    'put' => [
+                        'path' => '/grptags/{id}',
+                    ],
+                ],
+            ],
+            'attributes' => [
+                1 => [
+                    'security' => 'is_granted(\'ROLE_Admin\')',
+                    'security_message' => 'Vous n\'avez pas acces à ce ressource',
+                    'pagination_items_per_page' => 30,
+                    'normalization_context' => [
+                        'groups' => [
+                            'groupetags:read',
+                        ],
+                    ],
+                    'denormalization_context' => [
+                        'groups' => [
+                            'groupetags:write',
+                        ],
+                    ],
+                    'route_prefix' => '/admins',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+    ],
+    []
+); }];

@@ -11,6 +11,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -53,7 +54,8 @@ class Profil
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"profil:read"})
+     * @Groups({"profil:write"})
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $libelle;
 
@@ -67,7 +69,7 @@ class Profil
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isDeleted;
+    private $isDeleted=false;
 
     public function __construct()
     {

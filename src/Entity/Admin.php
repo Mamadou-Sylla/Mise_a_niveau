@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiProperty;
 use App\Repository\AdminRepository;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\User;
@@ -31,7 +32,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     },
  *      itemOperations={
  *     "get"={"path"="/admin/{id}"},
- *     "put"={"path"="/admin/{id}"},
+ *     "put_user"={"method"="PUT", "path"="/admin/{id_admin}", "route_name"="admin"},
  *
  *     }
  * )
@@ -43,6 +44,7 @@ class Admin extends User
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups({"admin:read"})
+     * @ApiProperty(identifier=true)
      */
     protected $id;
 

@@ -11,6 +11,7 @@
 
 namespace Symfony\Bundle\FrameworkBundle\Controller;
 
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Persistence\ManagerRegistry;
 use Psr\Container\ContainerInterface;
 use Psr\Link\LinkInterface;
@@ -56,6 +57,7 @@ abstract class AbstractController implements ServiceSubscriberInterface
 {
     /**
      * @var ContainerInterface
+     * @ORM\Column(type="string")
      */
     protected $container;
 

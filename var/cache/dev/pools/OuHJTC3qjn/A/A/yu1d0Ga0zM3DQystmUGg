@@ -21,7 +21,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 false,
             ],
             'identifier' => [
-                true,
+                false,
             ],
             'childInherited' => [
                 'App\\Entity\\Formateur',

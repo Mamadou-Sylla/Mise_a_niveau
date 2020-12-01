@@ -31,17 +31,17 @@ class UserService
     }
     public function PostUser(Request $request){
 
-        $post_user = $request->getContent();
-
-        //$user= $this->serializer->deserialize($post_user, 'App\Entity\User', 'json');
-        //dd($user);
+        $post_user = $request->request->all();
+        //dd($post_user);
+        $user= $this->serializer->denormalize($post_user, 'App\Entity\User', 'json');
+        dd($user);
         //$user=json_encode(json_decode($post_user), true);
         //dd($user[]);
-        $errors = $this->validator->validate($user);
+        /*$errors = $this->validator->validate($user);
          if ($errors) {
              $errorsString =$this->serializer->serialize($errors,"json");
              return new JsonResponse( $errorsString ,Response::HTTP_BAD_REQUEST,[],true);
-         }
+         }*/
 
         //$password = $user->getPassword();
         //$user=$user->setPassword($this->encoder->encodePassword($user, $password));

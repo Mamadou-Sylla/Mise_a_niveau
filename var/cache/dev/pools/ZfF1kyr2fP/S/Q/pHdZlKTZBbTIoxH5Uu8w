@@ -33,7 +33,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             ],
             'attributes' => [
                 1 => [
-                    'security' => 'is_granted(\'ROLE_Admin\') and is_granted(\'ROLE_CM\') and is_granted(\'ROLE_Formateur\')',
+                    'security' => 'is_granted(\'ROLE_Admin\')',
                     'security_message' => 'Vous n\'avez pas acces à ce ressource',
                     'normalization_context' => [
                         'groups' => [
