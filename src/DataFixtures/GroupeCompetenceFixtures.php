@@ -17,7 +17,7 @@ class GroupeCompetenceFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
-        for ($g=1; $g<=3; $g++) {
+        for ($g=1; $g<=6; $g++) {
             $gcomp = new GroupeCompetence();
             $gcomp
                 ->setLibelle("Libelle" . $g)

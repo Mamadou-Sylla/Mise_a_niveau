@@ -43,11 +43,12 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
-                    'put' => [
-                        'path' => '/formateurs/{id}',
+                    'add_apprenant' => [
+                        'method' => 'PUT',
+                        'path' => '/formateurs/{id_formateur}',
+                        'route_name' => 'add_formateur',
                         'input' => null,
                         'output' => null,
-                        'method' => 'PUT',
                         'input_formats' => [
                             'jsonld' => [
                                 'application/ld+json',
@@ -103,11 +104,12 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
-                    'post' => [
+                    'post_formateur' => [
+                        'method' => 'POST',
                         'path' => '/formateurs',
+                        'route_name' => 'formateur',
                         'input' => null,
                         'output' => null,
-                        'method' => 'POST',
                         'input_formats' => [
                             'jsonld' => [
                                 'application/ld+json',

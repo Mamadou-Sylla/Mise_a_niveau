@@ -61,7 +61,6 @@ class User implements UserInterface
      * @Groups({"profil:read", "admin:read", "cm:read","formateur:read","apprenant:read"})
      * @Assert\NotBlank(message="L'email est obligatoire")
      * @ApiProperty(identifier=false)
-
      */
     protected $email;
 

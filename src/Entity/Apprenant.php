@@ -57,7 +57,7 @@ class Apprenant extends User
     private $adresse;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="blob", length=255, nullable=true)
      */
     private $avatar;
 

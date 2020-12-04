@@ -144,7 +144,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             ],
             'attributes' => [
                 [
-                    'security' => 'is_granted(\'ROLE_Admin\')',
+                    'security' => 'is_granted(\'ROLE_Admin\') or is_granted(\'ROLE_Formateur\') and is_granted(\'ROLE_CM\')',
                     'security_message' => 'Vous n\'avez pas acces à ce ressource',
                     'normalization_context' => [
                         'groups' => [
@@ -156,7 +156,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             'grpcompetence:write',
                         ],
                     ],
-                    'route_prefix' => '/admin',
+                    'route_prefix' => '/admins',
                     'input' => null,
                     'output' => null,
                 ],

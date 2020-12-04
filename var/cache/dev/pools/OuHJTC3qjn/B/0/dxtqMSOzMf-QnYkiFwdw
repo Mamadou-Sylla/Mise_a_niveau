@@ -21,13 +21,13 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 true,
             ],
             'readableLink' => [
-                false,
+                true,
             ],
             'writableLink' => [
                 true,
             ],
             'required' => [
-                false,
+                true,
             ],
             'identifier' => [
                 false,

@@ -50,9 +50,7 @@ class ApprenantController extends AbstractController
     {
         $user = $repo->findOneBy(["id" => $id_apprenant]);
         //dd($user);
-        //  $data = $request->getContent();
         $data = json_decode($request->getContent());
-
         //dd($data);
 
         $errors = $validator->validate($data);

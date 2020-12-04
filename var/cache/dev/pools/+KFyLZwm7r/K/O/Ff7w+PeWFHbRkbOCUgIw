@@ -16,9 +16,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'itemOperations' => [
                 [
                     'get' => [
-                        'path' => '/admin/competences/{id}',
-                        'input' => null,
-                        'output' => null,
                         'method' => 'GET',
                         'input_formats' => [
                             'jsonld' => [
@@ -43,10 +40,32 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
+                    'delete' => [
+                        'method' => 'DELETE',
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
                     'put' => [
-                        'path' => '/admin/competences/{id}',
-                        'input' => null,
-                        'output' => null,
                         'method' => 'PUT',
                         'input_formats' => [
                             'jsonld' => [
@@ -71,14 +90,30 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
+                    'patch' => [
+                        'method' => 'PATCH',
+                        'input_formats' => [
+                            'json' => [
+                                'application/merge-patch+json',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
                 ],
             ],
             'collectionOperations' => [
                 [
                     'get' => [
-                        'path' => '/admin/competences',
-                        'input' => null,
-                        'output' => null,
                         'method' => 'GET',
                         'input_formats' => [
                             'jsonld' => [
@@ -104,9 +139,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         ],
                     ],
                     'post' => [
-                        'path' => '/admin/competences',
-                        'input' => null,
-                        'output' => null,
                         'method' => 'POST',
                         'input_formats' => [
                             'jsonld' => [
@@ -144,13 +176,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             ],
             'attributes' => [
                 [
-                    'security' => 'is_granted(\'ROLE_Admin\')',
-                    'security_message' => 'Vous n\'avez pas acces à ce ressource',
-                    'denormalization_context' => [
-                        'groups' => [
-                            'competence:write',
-                        ],
-                    ],
                     'input' => null,
                     'output' => null,
                 ],

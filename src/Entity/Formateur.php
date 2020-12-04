@@ -21,12 +21,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * },
  *     collectionOperations={
  *     "get"={"path"="/formateurs"},
- *      "post"={"path"="/formateurs"},
+ *      "post_formateur"={"method"="POST", "path"="/formateurs", "route_name"="formateur"
+ *       }
  *     },
  *      itemOperations={
  *     "get"={"path"="/formateurs/{id}"},
- *     "put"={"path"="/formateurs/{id}"},
- *
+ *     "add_apprenant"={"method"="PUT", "path"="/formateurs/{id_formateur}", "route_name"="add_formateur"},
  *     }
  * )
  */

@@ -16,6 +16,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'unique' => [
                 true,
             ],
+            'message' => [
+                2 => 'L\'email est obligatoire',
+            ],
             'groups' => [
                 2 => [
                     'Default',

@@ -3,6 +3,7 @@
 return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
     $o = [
         clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+        clone ($p['Symfony\\Bridge\\Doctrine\\Validator\\Constraints\\UniqueEntity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Bridge\\Doctrine\\Validator\\Constraints\\UniqueEntity')),
         clone ($p['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
     ],
     null,
@@ -11,35 +12,15 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'repositoryClass' => [
                 'App\\Repository\\TagRepository',
             ],
-            'collectionOperations' => [
-                1 => [
-                    'get' => [
-                        'path' => '/admin/competences',
-                    ],
-                    'post' => [
-                        'path' => '/admin/competences',
-                    ],
-                ],
+            'message' => [
+                1 => 'Un tag existe déjà avec cette libelle.',
             ],
-            'itemOperations' => [
-                1 => [
-                    'get' => [
-                        'path' => '/admin/competences/{id}',
-                    ],
-                    'put' => [
-                        'path' => '/admin/competences/{id}',
-                    ],
-                ],
+            'fields' => [
+                1 => 'libelle',
             ],
-            'attributes' => [
+            'groups' => [
                 1 => [
-                    'security' => 'is_granted(\'ROLE_Admin\')',
-                    'security_message' => 'Vous n\'avez pas acces à ce ressource',
-                    'denormalization_context' => [
-                        'groups' => [
-                            'competence:write',
-                        ],
-                    ],
+                    'Default',
                 ],
             ],
         ],
@@ -47,6 +28,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
     [
         $o[0],
         $o[1],
+        $o[2],
     ],
     []
 ); }];

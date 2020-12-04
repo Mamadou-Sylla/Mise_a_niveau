@@ -16,8 +16,10 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'get' => [
                         'path' => '/formateurs',
                     ],
-                    'post' => [
+                    'post_formateur' => [
+                        'method' => 'POST',
                         'path' => '/formateurs',
+                        'route_name' => 'formateur',
                     ],
                 ],
             ],
@@ -26,8 +28,10 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'get' => [
                         'path' => '/formateurs/{id}',
                     ],
-                    'put' => [
-                        'path' => '/formateurs/{id}',
+                    'add_apprenant' => [
+                        'method' => 'PUT',
+                        'path' => '/formateurs/{id_formateur}',
+                        'route_name' => 'add_formateur',
                     ],
                 ],
             ],

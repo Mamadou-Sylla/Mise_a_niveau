@@ -5,6 +5,8 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\OneToMany'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\OneToMany')),
         clone ($p['ApiPlatform\\Core\\Annotation\\ApiSubresource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiSubresource')),
         clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        clone ($p['Symfony\\Component\\Validator\\Constraints\\NotBlank'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\NotBlank')),
+        clone ($p['Symfony\\Component\\Validator\\Constraints\\Count'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Count')),
     ],
     null,
     [
@@ -20,12 +22,37 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'persist',
                 ],
             ],
+            'message' => [
+                3 => 'Ce champ est obligatoire',
+            ],
+            'groups' => [
+                3 => [
+                    'Default',
+                ],
+                [
+                    'Default',
+                ],
+            ],
+            'minMessage' => [
+                4 => 'Veuillez ajouter minimum 3 niveau',
+            ],
+            'maxMessage' => [
+                4 => 'Veuillez ajouter maximum 3 niveau',
+            ],
+            'min' => [
+                4 => 3,
+            ],
+            'max' => [
+                4 => 3,
+            ],
         ],
         'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
             'groups' => [
                 2 => [
                     'competence:read',
                     'competence:write',
+                    'grpcompetence:read',
+                    'grpcompetence:write',
                 ],
             ],
         ],
@@ -34,6 +61,8 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         $o[0],
         $o[1],
         $o[2],
+        $o[3],
+        $o[4],
     ],
     []
 ); }];

@@ -7,6 +7,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
     null,
     [
         'stdClass' => [
+            'type' => [
+                'blob',
+            ],
             'length' => [
                 255,
             ],

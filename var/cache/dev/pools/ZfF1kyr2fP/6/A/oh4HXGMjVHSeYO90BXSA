@@ -3,6 +3,7 @@
 return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
     $o = [
         clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+        clone ($p['Symfony\\Bridge\\Doctrine\\Validator\\Constraints\\UniqueEntity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Bridge\\Doctrine\\Validator\\Constraints\\UniqueEntity')),
         clone ($p['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
     ],
     null,
@@ -11,8 +12,19 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'repositoryClass' => [
                 'App\\Repository\\CompetenceRepository',
             ],
-            'collectionOperations' => [
+            'message' => [
+                1 => 'Une competence existe déjà avec cette libelle.',
+            ],
+            'fields' => [
+                1 => 'libelle',
+            ],
+            'groups' => [
                 1 => [
+                    'Default',
+                ],
+            ],
+            'collectionOperations' => [
+                2 => [
                     'get' => [
                         'path' => '/admin/competences',
                     ],
@@ -22,7 +34,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 ],
             ],
             'itemOperations' => [
-                1 => [
+                2 => [
                     'get' => [
                         'path' => '/admin/competences/{id}',
                     ],
@@ -32,9 +44,14 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 ],
             ],
             'attributes' => [
-                1 => [
+                2 => [
                     'security' => 'is_granted(\'ROLE_Admin\')',
                     'security_message' => 'Vous n\'avez pas acces à ce ressource',
+                    'normalization_context' => [
+                        'groups' => [
+                            'competence:read',
+                        ],
+                    ],
                     'denormalization_context' => [
                         'groups' => [
                             'competence:write',
@@ -47,6 +64,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
     [
         $o[0],
         $o[1],
+        $o[2],
     ],
     []
 ); }];

@@ -28,8 +28,10 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'get' => [
                         'path' => '/cm/{id}',
                     ],
-                    'put' => [
-                        'path' => '/cm/{id}',
+                    'edit_cm' => [
+                        'method' => 'PUT',
+                        'path' => '/cm/{id_cm}',
+                        'route_name' => 'cm',
                     ],
                 ],
             ],

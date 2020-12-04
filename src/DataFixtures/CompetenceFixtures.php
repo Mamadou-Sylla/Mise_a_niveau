@@ -19,7 +19,7 @@ class CompetenceFixtures extends Fixture
         $faker = Factory::create('fr_FR');
             $competence = new Competence();
             $competence
-                ->setLibelle("Community Manager");
+                ->setLibelle("Administrateur base de données");
            $this->addReference(self::Competence, $competence);
             $manager->persist($competence);
 

@@ -8,12 +8,17 @@ use App\Repository\CompetenceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 /**
  * @ORM\Entity(repositoryClass=CompetenceRepository::class)
+ * @UniqueEntity(fields="libelle", message="Une competence existe déjà avec cette libelle.")
  * @ApiResource(
+ *    normalizationContext={"groups"={"competence:read"}},
  *    denormalizationContext={"groups"={"competence:write"}},
  *
  *     attributes={
@@ -36,20 +41,28 @@ class Competence
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"competence:read"})
+     * @Groups({"competence:read", "grpcompetence:read", "grpe_competence:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"competence:read", "competence:write"})
+     * @Groups({"competence:read", "competence:write", "grpcompetence:read", "grpcompetence:write", "grpe_competence:read"})
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $libelle;
 
     /**
      * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence", cascade={"persist"})
      * @ApiSubresource()
-     * @Groups({"competence:read","competence:write"})
+     * @Groups({"competence:read","competence:write", "grpcompetence:read", "grpcompetence:write"})
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
+     * @Assert\Count(
+     *      min = 3,
+     *      max = 3,
+     *      minMessage = "Veuillez ajouter minimum 3 niveau",
+     *      maxMessage = "Veuillez ajouter maximum 3 niveau"
+     * )
      */
     private $niveau;
 

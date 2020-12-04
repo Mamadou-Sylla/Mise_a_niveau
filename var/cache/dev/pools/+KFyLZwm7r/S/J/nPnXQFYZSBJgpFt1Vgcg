@@ -16,6 +16,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'App\\Entity\\Competence',
                     'App\\Entity\\Niveau',
                     'App\\Entity\\Admin',
+                    'App\\Entity\\Referentiel',
                     'App\\Entity\\GroupeTag',
                     'App\\Entity\\Profil',
                     'App\\Entity\\Apprenant',

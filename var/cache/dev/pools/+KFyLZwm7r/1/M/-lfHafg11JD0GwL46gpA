@@ -43,11 +43,40 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
-                    'put' => [
+                    'putTag' => [
+                        'method' => 'PUT',
                         'path' => '/grptags/{id}',
+                        'route_name' => 'edit',
                         'input' => null,
                         'output' => null,
-                        'method' => 'PUT',
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
+                    'delete' => [
+                        'path' => '/grptags/{id}/tags',
+                        'input' => null,
+                        'output' => null,
+                        'method' => 'DELETE',
                         'input_formats' => [
                             'jsonld' => [
                                 'application/ld+json',
@@ -147,7 +176,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'security' => 'is_granted(\'ROLE_Admin\')',
                     'security_message' => 'Vous n\'avez pas acces à ce ressource',
                     'pagination_items_per_page' => 30,
-                    'normalization_context' => [
+                    'normalizationContext' => [
                         'groups' => [
                             'groupetags:read',
                         ],

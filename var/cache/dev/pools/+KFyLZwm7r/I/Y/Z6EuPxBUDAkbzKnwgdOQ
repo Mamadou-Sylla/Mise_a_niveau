@@ -146,6 +146,11 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'security' => 'is_granted(\'ROLE_Admin\')',
                     'security_message' => 'Vous n\'avez pas acces à ce ressource',
+                    'normalization_context' => [
+                        'groups' => [
+                            'competence:read',
+                        ],
+                    ],
                     'denormalization_context' => [
                         'groups' => [
                             'competence:write',

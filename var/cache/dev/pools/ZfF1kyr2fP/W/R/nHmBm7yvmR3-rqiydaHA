@@ -14,6 +14,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'inversedBy' => [
                 'users',
             ],
+            'message' => [
+                1 => 'Le profil est obligatoire',
+            ],
             'groups' => [
                 1 => [
                     'Default',

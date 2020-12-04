@@ -2,33 +2,21 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\TagRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 
 /**
  * @ORM\Entity(repositoryClass=TagRepository::class)
- *  @ApiResource(
- *    denormalizationContext={"groups"={"competence:write"}},
- *
- *     attributes={
- *      "security"="is_granted('ROLE_Admin')",
- *      "security_message"="Vous n'avez pas acces à ce ressource"
- * },
- *     collectionOperations={
- *        "get"={"path"="/admin/competences"},
- *        "post"={"path"="/admin/competences"}
- *     },
- *      itemOperations={
- *     "get"={"path"="/admin/competences/{id}"},
- *     "put"={"path"="/admin/competences/{id}"}
- *     }
- * )
+ * @UniqueEntity(fields="libelle", message="Un tag existe déjà avec cette libelle.")
+ * @ApiResource()
  */
 class Tag
 {
@@ -36,19 +24,20 @@ class Tag
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"groupetags:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"groupetags:read"})
+     * @Groups({"groupetags:read", "groupetags:write"})
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"groupetags:read"})
+     * @Groups({"groupetags:read", "groupetags:write"})
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $descriptif;
 
@@ -56,6 +45,12 @@ class Tag
      * @ORM\ManyToMany(targetEntity=GroupeTag::class, mappedBy="Tag", cascade={"persist"})
      */
     private $groupeTags;
+
+    /**
+     * @ORM\Column(type="boolean")
+     * @Groups({"groupetags:read"})
+     */
+    private $isDeleted=false;
 
     public function __construct()
     {
@@ -114,6 +109,18 @@ class Tag
         if ($this->groupeTags->removeElement($groupeTag)) {
             $groupeTag->removeTag($this);
         }
+
+        return $this;
+    }
+
+    public function getIsDeleted(): ?bool
+    {
+        return $this->isDeleted;
+    }
+
+    public function setIsDeleted(bool $isDeleted): self
+    {
+        $this->isDeleted = $isDeleted;
 
         return $this;
     }

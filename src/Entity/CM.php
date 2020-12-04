@@ -30,7 +30,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *     },
  *      itemOperations={
  *     "get"={"path"="/cm/{id}"},
- *     "put"={"path"="/cm/{id}"},
+ *     "edit_cm"={"method"="PUT", "path"="/cm/{id_cm}", "route_name"="cm"},
  *
  *     }
  * )

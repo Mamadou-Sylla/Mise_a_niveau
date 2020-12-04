@@ -7,6 +7,7 @@ use ApiPlatform\Core\Validator\ValidatorInterface;
 use App\Entity\Profil;
 use App\Entity\User;
 use App\Repository\ProfilRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\Request;
@@ -52,4 +53,22 @@ class UserService
         return new JsonResponse("vous avez ajouter un user succes",Response::HTTP_CREATED,[],true);
     }
 
+
+
+
+    public function EditUser(Request $request, ValidatorInterface $validator, SerializerInterface $serializer, EntityManagerInterface $manager)
+    {
+
+        $data = json_decode($request->getContent());
+
+        $errors = $validator->validate($data);
+        if ($errors) {
+            $errorsString =$serializer->serialize($errors,"json");
+            return new JsonResponse( $errorsString ,Response::HTTP_BAD_REQUEST,[],true);
+        }
+        $manager->flush();
+        return new JsonResponse($data, 200);
+
+
+    }
 }

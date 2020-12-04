@@ -6,7 +6,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone ($p['Symfony\\Component\\PropertyInfo\\Type'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\PropertyInfo\\Type')),
         clone $p['Symfony\\Component\\PropertyInfo\\Type'],
         clone $p['Symfony\\Component\\PropertyInfo\\Type'],
-        clone ($p['ApiPlatform\\Core\\Metadata\\Property\\SubresourceMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Metadata\\Property\\SubresourceMetadata')),
     ],
     null,
     [
@@ -18,22 +17,19 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 true,
             ],
             'writable' => [
-                false,
-            ],
-            'readableLink' => [
                 true,
             ],
-            'writableLink' => [
+            'readableLink' => [
                 false,
+            ],
+            'writableLink' => [
+                true,
             ],
             'required' => [
                 false,
             ],
             'identifier' => [
                 false,
-            ],
-            'subresource' => [
-                $o[4],
             ],
             'initializable' => [
                 false,
@@ -64,14 +60,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             ],
             'collectionValueType' => [
                 1 => $o[3],
-            ],
-        ],
-        'ApiPlatform\\Core\\Metadata\\Property\\SubresourceMetadata' => [
-            'resourceClass' => [
-                4 => 'App\\Entity\\Tag',
-            ],
-            'collection' => [
-                4 => true,
             ],
         ],
     ],

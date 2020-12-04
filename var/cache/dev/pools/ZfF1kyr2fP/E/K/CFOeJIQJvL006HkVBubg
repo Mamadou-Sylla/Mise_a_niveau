@@ -1,0 +1,68 @@
+<?php //%255BApp%255CEntity%255CReferentiel%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+        clone ($p['Symfony\\Bridge\\Doctrine\\Validator\\Constraints\\UniqueEntity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Bridge\\Doctrine\\Validator\\Constraints\\UniqueEntity')),
+        clone ($p['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'repositoryClass' => [
+                'App\\Repository\\ReferentielRepository',
+            ],
+            'message' => [
+                1 => 'Une référentiel existe déjà avec cette libelle.',
+            ],
+            'fields' => [
+                1 => 'libelle',
+            ],
+            'groups' => [
+                1 => [
+                    'Default',
+                ],
+            ],
+            'collectionOperations' => [
+                2 => [
+                    'get' => [
+                        'path' => '/referentiels/grpecompetences',
+                        'normalization_context' => [
+                            'groups' => [
+                                'grpe_competence:read',
+                            ],
+                        ],
+                    ],
+                    'post' => [
+                        'method' => 'POST',
+                        'path' => '/referentiels',
+                        'route_name' => 'referentiel',
+                    ],
+                ],
+            ],
+            'attributes' => [
+                2 => [
+                    'security' => 'is_granted(\'ROLE_Admin\') or is_granted(\'ROLE_Formateur\') or is_granted(\'ROLE_CM\')',
+                    'security_message' => 'Vous n\'avez pas acces à ce ressource',
+                    'normalization_context' => [
+                        'groups' => [
+                            'referentiel:read',
+                        ],
+                    ],
+                    'denormalization_context' => [
+                        'groups' => [
+                            'referentiel:write',
+                        ],
+                    ],
+                    'route_prefix' => '/admins',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+        $o[2],
+    ],
+    []
+); }];

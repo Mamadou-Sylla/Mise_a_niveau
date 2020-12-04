@@ -6,6 +6,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\NiveauRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 /**
@@ -35,32 +37,34 @@ class Niveau
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"competence:read"})
+     * @Groups({"competence:read", "grpcompetence:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"competence:read"})
+     * @Groups({"competence:read", "competence:write", "grpcompetence:read", "grpcompetence:write"})
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $libelle;
 
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"competence:read"})
+     * @Groups({"competence:read", "competence:write", "grpcompetence:read", "grpcompetence:write"})
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $critereEvalution;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"competence:read"})
+     * @Groups({"competence:read", "competence:write", "grpcompetence:read", "grpcompetence:write"})
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $groupeAction;
 
     /**
      * @ORM\ManyToOne(targetEntity=Competence::class, inversedBy="niveau", cascade={"persist"})
-     *  @Groups({"competence:read","competence:write"})
      */
     private $competence;
 

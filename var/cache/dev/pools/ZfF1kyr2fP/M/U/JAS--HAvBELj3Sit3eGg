@@ -9,6 +9,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
     null,
     [
         'stdClass' => [
+            'message' => [
+                1 => 'Le password est obligatoire',
+            ],
             'groups' => [
                 1 => [
                     'Default',
